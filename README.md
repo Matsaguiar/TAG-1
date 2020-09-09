@@ -17,9 +17,13 @@ que lê o arquivo (soc-dolphins.mtx, ou o txt), monta com esses dados um grafo n
 pesos, usando listas de adjacências, e então calcula e imprime como saída (tela) o seguinte:
 
 (1) o vértice, e seu respectivo grau (para todos os vértices);
+
 (2) todos os cliques maximais (indicando o número de vértices e quais);
+
 (3) O Coeficiente de Aglomeração de cada vértice;
+
 (4) O Coeficiente médio de Aglomeração do Grafo.
+
 O código deve ser bem documentado, de forma modular com funções para cada tarefa independente,
 realizado por dois (2) estudantes do curso usando “pair programming”, e entregue via sistema
 http://aprender.unb.br do curso, no prazo estipulado.
