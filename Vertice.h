@@ -18,6 +18,6 @@ typedef struct Vertice{
 
 vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores);
 
-void Imprimir_grafo(vector<vector<int>> Grafo, S_Grafo Valores);
+void Imprimir_grafo(vector<vector<int>> Grafo);
 
 #endif  //  VERTICE_H
