@@ -1,6 +1,8 @@
 #include "Vertice.h"
 
-vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores){
+using namespace std;
+
+vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo Valores){
     FILE* fd;
 
     char file[] = "soc-dolphins.mtx";
@@ -13,10 +15,11 @@ vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores){
 
     rewind(fd); // Move para o começo do arquivo;
 
-    while(fgetc(fd) == '%'){
+    while(fgetc(fd) == '%'){ //Pula os comentarios;
         fscanf(fd, "%*[^\n]\n");
         cout << '1';
     }
+    
     fseek(fd, -1, SEEK_CUR);
 
     int a, b, N;
@@ -26,19 +29,19 @@ vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores){
     Valores.quantidade = N;
 
     for(int i = 0; i < N; i++){
-        int Va, Vb;
-        fscanf(fd, "%d %d", &Va, &Vb);
-        Grafo[Va].push_back(Vb);
-        Grafo[Vb].push_back(Va);
+        int Vori, Vdes;
+        fscanf(fd, "%d %d", &Vori, &Vdes);
+        Grafo[Vori].push_back(Vdes);
+        Grafo[Vdes].push_back(Vori);
     }
     
     fclose(fd);
-    return 0;
+    return Grafo;
 }
 
-void Imprimir_grafo(vector<vector<int>> Grafo, S_Vertice Valores){
-    for(int i = 0; i < Valores.origem; i++){
-        for(int j = 0; j < Valores.destino; j++){
+void Imprimir_grafo(vector<vector<int>>Grafo){
+    for(int i = 0; i < Grafo.size(); i++){
+        for(int j = 0; j < Grafo[i].size(); j++){
             cout << Grafo[i][j];
         } 
         cout << endl;
