@@ -7,8 +7,9 @@
 
 using namespace std;
 
-void Obter_tamanho(int *Va, int *Vb, int *Vc);
-vector<vector<int>> Obter_dados(int Va, int Vb, int N);
+void Obter_tamanho(int *Va, int *Vb, int *Vc, FILE* fd);
+
+vector<vector<int>> Obter_dados(int Va, int Vb, int N, FILE* fd);
 
 void Imprimir_grafo(vector<vector<int>> Grafo);
 
