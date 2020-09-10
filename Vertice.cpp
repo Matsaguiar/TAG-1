@@ -2,10 +2,6 @@
 
  void Obter_tamanho(int *Va, int *Vb, int *Vc, FILE* fd){
 
-    if(fd == NULL){                 //Verifica se o arquivo abriu com sucesso;
-        cout << "Erro abrir arquivo" << endl;
-    }
-    
     rewind(fd);                     // Move o ponteiro para o começo do arquivo;
     
     while(fgetc(fd) == '%'){        //Pula os comentarios;
@@ -29,7 +25,6 @@ vector<vector<int>> Obter_dados(int Va, int Vb, int N, FILE* fd){
         Grafo[b-1].push_back(a);
     }
     
-    fclose(fd);
     return Grafo;
 }
 
