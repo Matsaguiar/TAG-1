@@ -1,7 +1,37 @@
 #include "Vertice.h"
 
-vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores){
+// vector<vector<int>> Faz_grafo(int v){
+//     vector<vector<int>> graph(v); 
+//     return Grafo;
+// }
+
+ void Obter_tamanho(int *Va, int *Vb, int *Vc){
     FILE* fd;
+
+    char file[] = "soc-dolphins.mtx";
+    fd = fopen(file, "r");
+
+    if(fd == NULL){
+        printf("Erro abrir arquivo\n");
+    }
+    
+    rewind(fd); // Move para o começo do arquivo;
+    
+    while(fgetc(fd) == '%'){ //Pula os comentarios;
+        fscanf(fd, "%*[^\n]\n");
+    }
+
+    fseek(fd, -1, SEEK_CUR);
+        
+    fscanf(fd, "%d %d %d", Va, Vb, Vc);
+
+    fclose(fd);
+}
+
+vector<vector<int>> Obter_dados(int Va, int Vb, int N){
+    FILE* fd;
+
+    vector<vector<int>> Grafo(Va);
 
     char file[] = "soc-dolphins.mtx";
     fd = fopen(file, "r");
@@ -15,44 +45,30 @@ vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores){
     
     while(fgetc(fd) == '%'){ //Pula os comentarios;
         fscanf(fd, "%*[^\n]\n");
-        cout << '1';
     }
-    cout << endl;
 
     fseek(fd, -1, SEEK_CUR);
-    
-    int a, b, N;
-    
-    fscanf(fd, "%d %d %d", &a, &b, &N);
-    cout << a << endl;
-    cout << b << endl;
-    cout << N << endl;
-
-    Valores->origem = a;
-    Valores->destino = b;
-    Valores->quantidade = N;
-
-    cout << Valores->origem << endl;
-    cout << Valores->destino << endl;
-    cout << Valores->quantidade << endl;
+    int x, y, z;
+    fscanf(fd, "%d %d %d", &x, &y, &z);
 
     for(int i = 0; i < N; i++){
-        int Vori, Vdes;
-        fscanf(fd, "%d %d", &Vori, &Vdes);
-        cout << Vori << endl; cout << Vdes << endl;
-        Grafo[Vori].push_back(Vdes);
-        Grafo[Vdes].push_back(Vori);
+        int a, b;
+        fscanf(fd, "%d %d", &a, &b);
+        Grafo[a-1].push_back(b);
+        Grafo[b-1].push_back(a);
     }
     
     fclose(fd);
     return Grafo;
 }
 
-void Imprimir_grafo(vector<vector<int>>Grafo){
-    for(int i = 0; i < Grafo.size(); i++){
+void Imprimir_grafo(vector<vector<int>> Grafo){
+    for(int i = 0; i < 62; i++){
+        printf("%d - ", i+1);
         for(int j = 0; j < Grafo[i].size(); j++){
-            cout << Grafo[i][j];
+            printf("%d ", Grafo[i][j]);
         } 
+        cout << "Grau: " << Grafo[i].size();
         cout << endl;
     }
 }

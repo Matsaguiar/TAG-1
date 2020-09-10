@@ -7,16 +7,8 @@
 
 using namespace std;
 
-#define FALSE 0;
-#define TRUE 1;
-
-typedef struct Vertice{
-    int origem;
-    int destino;
-    int quantidade;
-}S_Grafo;
-
-vector<vector<int>> Obter_dados(vector<vector<int>>Grafo, S_Grafo* Valores);
+void Obter_tamanho(int *Va, int *Vb, int *Vc);
+vector<vector<int>> Obter_dados(int Va, int Vb, int N);
 
 void Imprimir_grafo(vector<vector<int>> Grafo);
 

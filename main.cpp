@@ -1,13 +1,16 @@
 #include "Vertice.h"
 
-using namespace std;
-
 int main(){
-    S_Grafo* Valores;
-    vector<vector<int>> Grafo;
+    // S_Grafo* Valores;
+    // cout << &Grafo << endl;
+    // cout << &Valores << endl;
+    
+    int Va, Vb, Vc;
+    Obter_tamanho(&Va, &Vb, &Vc);
+    vector<vector<int>> Grafo(Va+1);
 
-    Obter_dados(Grafo, Valores);
-
+    Grafo = Obter_dados(Va, Vb, Vc);
+    
     Imprimir_grafo(Grafo);
     return 0;
 }
