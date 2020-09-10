@@ -1,47 +1,28 @@
 #include "Vertice.h"
 
- void Obter_tamanho(int *Va, int *Vb, int *Vc, FILE* fd){
+int main(){
 
-    if(fd == NULL){                 //Verifica se o arquivo abriu com sucesso;
+    int Va, Vb, Vc;                     //Armazena os 3 primeiros valores do arquivo para montar o grafo;
+
+    FILE* fd;                           //Cria o ponteiro do arquivo;
+
+    char file[] = "soc-dolphins.mtx";   //Abre o arquivo soc-dolphins.mtx;
+    fd = fopen(file, "r");
+
+    if(fd == NULL){                     //Verifica se o arquivo abriu com sucesso;
         cout << "Erro abrir arquivo" << endl;
-    }
-    
-    rewind(fd);                     // Move o ponteiro para o começo do arquivo;
-    
-    while(fgetc(fd) == '%'){        //Pula os comentarios;
-        fscanf(fd, "%*[^\n]\n");
+        return 0;
     }
 
-    fseek(fd, -1, SEEK_CUR);
-        
-    fscanf(fd, "%d %d %d", Va, Vb, Vc);
+    Obter_tamanho(&Va, &Vb, &Vc, fd);   //Obtem a quantidade de vertices do grafo;
 
-}
+    vector<vector<int>> Grafo(Va+1);    //Cria o grafo;
 
-vector<vector<int>> Obter_dados(int Va, int Vb, int N, FILE* fd){
-    
-    vector<vector<int>> Grafo(Va);
-
-    for(int i = 0; i < N; i++){    //Faz a leitura dos vertices e seus respectivos elos;
-        int a, b;
-        fscanf(fd, "%d %d", &a, &b);
-        Grafo[a-1].push_back(b);
-        Grafo[b-1].push_back(a);
-    }
+    Grafo = Obter_dados(Va, Vb, Vc, fd);//Obtem os elos de cada vertice;
     
     fclose(fd);
-    return Grafo;
-}
 
-void Imprimir_grafo(vector<vector<int>> Grafo){
-    cout << "Vertices: " << endl;
-    for(int i = 0; i < 62; i++){
-        cout << i+1 << " - ";     //Imprime os vertices;
-        /* for(int j = 0; j < Grafo[i].size(); j++){
-            printf("%d ", Grafo[i][j]);
-        } */ 
-                                //Imprime o grau de cada vertice;
-        cout << "Grau: " << Grafo[i].size();
-        cout << endl;
-    }
+    Imprimir_grafo(Grafo);
+
+    return 0;
 }
