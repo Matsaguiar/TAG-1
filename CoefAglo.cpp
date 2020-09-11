@@ -5,15 +5,17 @@
 
 using namespace std;
 
-vector<double> coefAglomeracao;
 
-void Obtem_coef_vertice(vector<vector<int>> Grafo){
+void Obtem_coef_vertice(vector<vector<int>> Grafo, int tamCoef){
+    
+    vector<double> coefAglomeracao(tamCoef);
 
     double possivelTriang;
     double coefVertice;
     double triangulos;
 
-    for(int i = 1; i < 7; i++){
+    for(int i = 0; i < 7; i++){
+        cout << "i = " << i << endl;
         if(Grafo[i].size() > 1){ //Verifica se ha vizinhos para formar possiveis triangulos;            
             triangulos = 0;
             possivelTriang = (Grafo[i].size()*(Grafo[i].size()-1))/2;
@@ -25,7 +27,8 @@ void Obtem_coef_vertice(vector<vector<int>> Grafo){
                     int inf = Grafo[i][j+1] - 1;
 
                     for(int k = 0; k < Grafo[inf].size(); k++){
-                        //printf("Inf: %d  - Grafo[%d][%d] =  %d = Grafo[%d][%d] = %d\n", inf, i, j, Grafo[i][j], inf, k, Grafo[inf][k]);    
+                        cout << " Grafo[i][j]= " << Grafo[i][j] << " Grafo[i][j+1] = " << Grafo[i][j+1] << endl;
+                        printf("Inf: %d  - Grafo[%d][%d] =  %d = Grafo[%d][%d] = %d\n", inf, i, j, Grafo[i][j], inf, k, Grafo[inf][k]);    
                         if(Grafo[i][j] == Grafo[inf][k]){
                             cout << "ENTROU5" << endl;
                             //triangulos = (triangulos + 1)/2; 
@@ -39,8 +42,8 @@ void Obtem_coef_vertice(vector<vector<int>> Grafo){
             cout << triangulos << endl << "PosTri " << possivelTriang << endl;;
             coefVertice = triangulos/possivelTriang;
             cout << coefVertice << endl;
-            //coefAglomeracao[i] = coefVertice;
-            cout << coefAglomeracao[i] << endl;
+            coefAglomeracao[i] = coefVertice;
+            //cout << coefAglomeracao[i] << endl;
         }
         /* else{
             coefAglomeracao[i] = 0;
@@ -49,11 +52,11 @@ void Obtem_coef_vertice(vector<vector<int>> Grafo){
     }
     
     cout << "Coeficientes: " << endl;
-    for(int i = 0; i < 7; i++){
+    /* for(int i = 0; i < 7; i++){
         cout << i+1 << " - ";     //Imprime os vertices;                
         cout << "Coef: " << coefAglomeracao[i]; 
         cout << endl;
-    }
+    } */
 }
 
 int main(){
@@ -84,7 +87,7 @@ int main(){
         cout << "Grau: " << Grafo[i].size(); //Imprime o grau de cada vertice;
         cout << endl;
     } */
-    Obtem_coef_vertice(Grafo);
+    Obtem_coef_vertice(Grafo, 7);
     
     return 0;
 }
