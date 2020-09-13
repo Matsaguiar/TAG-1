@@ -1,6 +1,6 @@
 #include "Vertice.h"
 
- void Obter_tamanho(int *Va, int *Vb, int *Vc, FILE* fd){
+void Obter_tamanho(int *Va, int *Vb, int *Vc, FILE* fd){
 
     rewind(fd);                     // Move o ponteiro para o começo do arquivo;
     
