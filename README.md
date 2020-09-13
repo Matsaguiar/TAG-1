@@ -27,17 +27,17 @@ pesos, usando listas de adjacências, e então calcula e imprime como saída (te
 
 Alunos:
 
-Lamarzin: 
+João Pedro Sadéri da Silva: 17/0126021
 
 Matheus Arruda Aguiar: 18/0127659
 
 =============================================================
 
 Para compilar é necessário inserir o comando no terminal:
-g++ main.cpp Vertice.cpp CoefAglo.cpp -o main
+g++ main.cpp Vertice.cpp CoefAglo.cpp -o exe
 
 Em seguida para executar, basta inserir:
-./main
+./exe
 
 =============================================================
 
