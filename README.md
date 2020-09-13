@@ -24,12 +24,14 @@ pesos, usando listas de adjacências, e então calcula e imprime como saída (te
 (4) O Coeficiente médio de Aglomeração do Grafo.
 
 =============================================================
+
 Alunos:
 
 Lamarzin: 
 Matheus Arruda Aguiar: 18/0127659
 
 =============================================================
+
 Para compilar é necessário inserir o comando no terminal:
 g++ main.cpp Vertice.cpp CoefAglo.cpp -o main
 
@@ -37,6 +39,7 @@ Em seguida para executar, basta inserir:
 ./main
 
 =============================================================
+
 O programa processa as informações do arquivo
 soc-dolphins.mtx.
 
