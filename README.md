@@ -34,7 +34,7 @@ Matheus Arruda Aguiar: 18/0127659
 =============================================================
 
 Para compilar é necessário inserir o comando no terminal:
-g++ main.cpp Vertice.cpp CoefAglo.cpp -o exe
+g++ main.cpp Vertice.cpp CoefAglo.cpp CliqueMaxi.cpp -o exe
 
 Em seguida para executar, basta inserir:
 ./exe
