@@ -7,7 +7,6 @@ Projeto 1
 Teoria e Aplicação de Grafos, Turma A, 1/2020
 Prof. Díbio
 
-
 Em 2003, no artigo “David Lusseau et al., The bottelenose dolphin community of Doubful Sound
 features a large proportion of long-lasting associations, Journal of Behavioral Ecology and
 Sociobiology 54:4, 396--405 (2003).” uma rede social de relações duradouras é identificada em uma
@@ -24,6 +23,23 @@ pesos, usando listas de adjacências, e então calcula e imprime como saída (te
 
 (4) O Coeficiente médio de Aglomeração do Grafo.
 
-O código deve ser bem documentado, de forma modular com funções para cada tarefa independente,
-realizado por dois (2) estudantes do curso usando “pair programming”, e entregue via sistema
-http://aprender.unb.br do curso, no prazo estipulado.
+=============================================================
+Alunos:
+
+Lamarzin: 
+Matheus Arruda Aguiar: 18/0127659
+
+=============================================================
+Para compilar é necessário inserir o comando no terminal:
+g++ main.cpp Vertice.cpp CoefAglo.cpp -o main
+
+Em seguida para executar, basta inserir:
+./main
+
+=============================================================
+O programa processa as informações do arquivo
+soc-dolphins.mtx.
+
+Em seguida mostra a tela inicial com um menu com as opções implementadas.
+Para escolher a função a ser executada, basta inserir
+um inteiro correspondente à opção listada.
