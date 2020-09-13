@@ -1,5 +1,6 @@
 #include "Vertice.h"
 #include "CoefAglo.h"
+#include "CliqueMaxi.h"
 
 void menu(vector<vector<int>> Grafo){
     int op = -1;
@@ -33,7 +34,7 @@ void menu(vector<vector<int>> Grafo){
             case 2:
                 system(CLEAR);
 
-                //FUNCAO;
+                Imprimir_bronKerbosch();
 
                 printf("\nAperte ENTER para continuar\n");
                 getchar();
@@ -79,28 +80,35 @@ void menu(vector<vector<int>> Grafo){
 }
 
 int main(){
+    int Va, Vb, Vc;                         //Armazena os 3 primeiros valores do arquivo para montar o grafo;
 
-    int Va, Vb, Vc;                     //Armazena os 3 primeiros valores do arquivo para montar o grafo;
+    FILE* fd;                               //Cria o ponteiro do arquivo;
 
-    FILE* fd;                           //Cria o ponteiro do arquivo;
-
-    char file[] = "soc-dolphins.mtx";   //Abre o arquivo soc-dolphins.mtx;
+    char file[] = "soc-dolphins.mtx";       //Abre o arquivo soc-dolphins.mtx;
     fd = fopen(file, "r");
 
-    if(fd == NULL){                     //Verifica se o arquivo abriu com sucesso;
+    if(fd == NULL){                         //Verifica se o arquivo abriu com sucesso;
         cout << "Erro abrir arquivo" << endl;
         return 0;
     }
     
-    Obter_tamanho(&Va, &Vb, &Vc, fd);   //Obtem a quantidade de vertices do grafo;
+    Obter_tamanho(&Va, &Vb, &Vc, fd);       //Obtem a quantidade de vertices do grafo;
 
-    vector<vector<int>> Grafo(Va+1);    //Cria o grafo;
+    vector<vector<int>> Grafo(Va+1);        //Cria lista de adjascencia do grafo;
 
-    Grafo = Obter_dados(Va, Vb, Vc, fd);//Obtem os elos de cada vertice;
+    Grafo = Obter_dados(Va, Vb, Vc, fd);    //Obtem os elos de cada vertice;
+
+    vector<int> R; //Vazio
+    vector<int> X; //Vazio
+    vector<int> P; //Passa a conter todos os vertices
+    for (int i = 0; i < Va; i++){
+        P.push_back(i+1);
+    }
+    bronKerbosch(R, P, X, Grafo);
     
     fclose(fd);
 
     menu(Grafo);
-
+   
     return 0;
 }
