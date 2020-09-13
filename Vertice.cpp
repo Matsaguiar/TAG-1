@@ -29,14 +29,22 @@ vector<vector<int>> Obter_dados(int Va, int Vb, int N, FILE* fd){
 }
 
 void Imprimir_grafo(vector<vector<int>> Grafo){
-    cout << "Vertices: " << endl;
+    cout << endl << "\tGrau dos Vertices" << endl << endl;
+    for(int i = 0; i < 62; i++){
+        cout << "Vertice " << i+1 << " - ";  //Imprime os vertices;                  
+        cout << Grafo[i].size();             //Imprime o grau de cada vertice;
+        cout << endl;
+    }
+}
+
+void Imprimir_vizinhos(vector<vector<int>> Grafo){
+    cout << endl << "\t Lista de Adjacencia " << endl << endl;
     for(int i = 0; i < 62; i++){
         cout << i+1 << " - ";     //Imprime os vertices;
-        /* for(int j = 0; j < Grafo[i].size(); j++){
-            printf("%d ", Grafo[i][j]);
-        } */ 
-                                //Imprime o grau de cada vertice;
-        cout << "Grau: " << Grafo[i].size();
+        for(int j = 0; j < Grafo[i].size(); j++){
+            cout << Grafo[i][j] << " ";
+
+        } 
         cout << endl;
     }
 }
